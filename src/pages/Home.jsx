@@ -192,12 +192,12 @@ const Home = () => {
         </div>
 
         {/* Grid */}
-        <div style={{
+        <div className="grid-mobile-1 grid-services-mobile" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
           gap: '2rem',
           animation: 'fadeIn 0.5s ease-out'
-        }} className="grid-mobile-1">
+        }}>
           {filteredShops.length > 0 ? (
             filteredShops.map(shop => (
               <ServiceCard key={shop.id} {...shop} />

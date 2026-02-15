@@ -25,7 +25,7 @@ const Navbar = () => {
     }}>
       <div className="container flex-center" style={{ justifyContent: 'space-between' }}>
         {/* Logo */}
-        <Link to="/" style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--color-text-main)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <Link to="/" style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--color-text-main)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem', flexShrink: 0 }}>
           <img src="/favicon.svg" alt="Valigo" style={{ width: '32px', height: '32px' }} />
           <span><span style={{ color: 'var(--color-primary)' }}>Gali</span>Go</span>
         </Link>

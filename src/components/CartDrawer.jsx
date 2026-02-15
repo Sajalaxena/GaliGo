@@ -24,7 +24,7 @@ const CartDrawer = () => {
       ></div>
 
       {/* Drawer */}
-      <div className="glass-panel w-full-mobile" style={{
+      <div className="glass-panel w-full-mobile h-dvh-mobile" style={{
         position: 'relative',
         width: '100%',
         maxWidth: '400px',

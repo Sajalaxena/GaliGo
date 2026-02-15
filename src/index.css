@@ -3,38 +3,46 @@
 
 :root {
   /* Color Palette - premium Sky Blue Gradient Theme */
-  --hue-primary: 210; /* Sky Blue */
-  --hue-secondary: 190; /* Cyan/Turquoise */
-  --hue-accent: 260; /* Violet/Purple */
+  --hue-primary: 210;
+  /* Sky Blue */
+  --hue-secondary: 190;
+  /* Cyan/Turquoise */
+  --hue-accent: 260;
+  /* Violet/Purple */
 
   /* Default Light Mode - Dynamic Sky Blue/White */
-  --color-bg: #ffffff; /* Fallback */
+  --color-bg: #ffffff;
+  /* Fallback */
   --color-surface: #ffffff;
-  --color-surface-glass: rgba(255, 255, 255, 0.85); /* Increased opacity for contrast */
+  --color-surface-glass: rgba(255, 255, 255, 0.85);
+  /* Increased opacity for contrast */
   --color-text-main: #1a1a1a;
-  --color-text-muted: #546e7a; /* Blue-grey for better readability */
+  --color-text-muted: #546e7a;
+  /* Blue-grey for better readability */
   --color-border: rgba(0, 0, 0, 0.08);
-  --color-shadow: rgba(0, 50, 100, 0.08); /* Slight blue tint in shadow */
+  --color-shadow: rgba(0, 50, 100, 0.08);
+  /* Slight blue tint in shadow */
 
-  --color-primary: hsl(var(--hue-primary), 90%, 50%); /* Slightly darker for contrast on white */
+  --color-primary: hsl(var(--hue-primary), 90%, 50%);
+  /* Slightly darker for contrast on white */
   --color-primary-glow: hsla(var(--hue-primary), 90%, 55%, 0.25);
   --color-secondary: hsl(var(--hue-secondary), 80%, 45%);
   --color-accent: hsl(var(--hue-accent), 85%, 60%);
-  --color-rating: #24963f; 
-  
+  --color-rating: #24963f;
+
   /* Spacing */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 2rem;
   --space-lg: 4rem;
   --space-xl: 6rem;
-  
+
   /* Border Radius - Slightly softer */
   --radius-sm: 10px;
   --radius-md: 18px;
   --radius-lg: 28px;
   --radius-pill: 9999px;
-  
+
   /* Transitions */
   --transition-fast: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --transition-smooth: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -57,15 +65,31 @@
 }
 
 @keyframes gradient-move {
-  0% { transform: translate(0, 0); }
-  50% { transform: translate(-20px, -20px); }
-  100% { transform: translate(0, 0); }
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-20px, -20px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
 }
 
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 * {
@@ -78,14 +102,14 @@ body {
   font-family: 'Outfit', sans-serif;
   background-color: var(--color-bg);
   /* Animated Mesh Gradient for Light Mode */
-  background-image: 
+  background-image:
     radial-gradient(at 0% 0%, hsla(210, 100%, 96%, 1) 0px, transparent 50%),
     radial-gradient(at 100% 0%, hsla(190, 100%, 96%, 1) 0px, transparent 50%),
     radial-gradient(at 100% 100%, hsla(260, 100%, 98%, 1) 0px, transparent 50%),
     radial-gradient(at 0% 100%, hsla(210, 100%, 96%, 1) 0px, transparent 50%);
   background-size: 150% 150%;
   animation: bg-shift 20s ease-in-out infinite alternate;
-  
+
   color: var(--color-text-main);
   line-height: 1.6;
   min-height: 100vh;
@@ -95,13 +119,22 @@ body {
 }
 
 [data-theme='dark'] body {
-  background-image: none; /* Keep dark mode clean/Deep Blue */
+  background-image: none;
+  /* Keep dark mode clean/Deep Blue */
 }
 
 @keyframes bg-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Glassmorphism Utilities */
@@ -125,7 +158,12 @@ body {
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 1.2;
   font-weight: 600;
   margin-bottom: var(--space-xs);
@@ -140,8 +178,13 @@ h1 {
   -webkit-text-fill-color: transparent;
 }
 
-h2 { font-size: 2.25rem; }
-h3 { font-size: 1.5rem; }
+h2 {
+  font-size: 2.25rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
 
 a {
   color: inherit;
@@ -226,8 +269,15 @@ button {
 
 /* Utility Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-fade-in {
@@ -242,7 +292,8 @@ button {
   }
 
   h1 {
-    font-size: 2.5rem !important; /* Override inline styles if needed, or better yet, use class */
+    font-size: 2.5rem !important;
+    /* Override inline styles if needed, or better yet, use class */
   }
 
   h2 {
@@ -252,7 +303,7 @@ button {
   .container {
     padding: 0 1rem;
   }
-  
+
   .glass-nav .container {
     height: 60px !important;
     padding: 0 1rem;
@@ -262,16 +313,31 @@ button {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
   }
-  
+
   /* Helper to hide elements on mobile */
   .hidden-mobile {
     display: none !important;
   }
-  
-  /* Make grid 1 column on very small screens, 2 on mobile */
-  .section > div[style*="gridTemplateColumns"] {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)) !important; 
+}
+
+/* Service Grid Mobile Utility */
+@media (max-width: 768px) {
+  .grid-services-mobile {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)) !important;
     gap: 1rem !important;
+  }
+
+  .layout-checkout {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .h-dvh-mobile {
+    height: 100dvh !important;
+  }
+
+  .flex-shrink-0 {
+    flex-shrink: 0;
   }
 }
 
@@ -279,7 +345,7 @@ button {
   h1 {
     font-size: 2rem !important;
   }
-  
+
   /* Stack flex-center items that are row by default if needed */
   .mobile-stack {
     flex-direction: column;
@@ -292,17 +358,17 @@ button {
   .hidden-mobile {
     display: none !important;
   }
-  
+
   .flex-col-mobile {
     flex-direction: column !important;
     align-items: stretch !important;
   }
-  
+
   .w-full-mobile {
     width: 100% !important;
     max-width: 100% !important;
   }
-  
+
   .p-sm-mobile {
     padding: 1rem !important;
   }
