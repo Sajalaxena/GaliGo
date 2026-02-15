@@ -22,146 +22,155 @@ const ServiceDetail = () => {
 
   return (
     <>
-       {/* Hero Image */}
-       <div style={{ 
-         height: '400px', 
-         width: '100%', 
-         backgroundImage: `url(${shop.image})`,
-         backgroundSize: 'cover',
-         backgroundPosition: 'center',
-         position: 'relative'
-       }}>
-         <div style={{ 
-           position: 'absolute', 
-           inset: 0, 
-           background: 'linear-gradient(to bottom, rgba(0,0,0,0.3), var(--color-bg))' 
-         }}></div>
-         
-         <div className="container" style={{ position: 'relative', height: '100%', paddingTop: '20px' }}>
-            <Link to="/" className="btn btn-ghost" style={{ background: 'rgba(0,0,0,0.5)', border: 'none', color: 'white' }}>
-              <ChevronLeft size={20} /> Back
-            </Link>
-         </div>
-       </div>
+      {/* Hero Image */}
+      <div className="hero-image-container" style={{
+        width: '100%',
+        backgroundImage: `url(${shop.image})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        position: 'relative'
+      }}>
+        {/* Responsive height handled via CSS class or inline media query if supported, but here using a default and relying on potential CSS helper or just keeping 400px for desktop and maybe smaller for mobile via a new class */}
+        <style>{`
+            .hero-image-container { height: 400px; }
+            @media (max-width: 768px) { .hero-image-container { height: 250px; } }
+            @media (max-width: 768px) { .service-detail-grid { grid-template-columns: 1fr !important; } }
+            @media (max-width: 768px) { .mobile-stack-header { flex-direction: column; align-items: flex-start; } }
+            @media (max-width: 768px) { .mobile-full-width-btn { width: 100%; margin-top: 1rem; } }
+         `}</style>
 
-       <div className="container" style={{ marginTop: '-100px', position: 'relative', zIndex: 10 }}>
-         <div className="glass-panel" style={{ padding: '2rem', borderRadius: 'var(--radius-lg)', marginBottom: '2rem' }}>
-            <div className="flex-center" style={{ justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
-              <div>
-                <div className="flex-center" style={{ justifyContent: 'flex-start', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                  <span style={{ 
-                    background: 'var(--color-primary)', 
-                    color: 'white', 
-                    padding: '2px 8px', 
-                    borderRadius: '4px', 
-                    fontSize: '0.8rem', 
-                    fontWeight: 'bold' 
-                  }}>
-                    {shop.category}
-                  </span>
-                  {shop.isOpen && (
-                    <span style={{ color: 'var(--color-secondary)', fontWeight: '600', fontSize: '0.9rem' }}>Open Now</span>
-                  )}
-                </div>
-                <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>{shop.name}</h1>
-                <div className="flex-center" style={{ justifyContent: 'flex-start', gap: '1.5rem', color: 'var(--color-text-muted)' }}>
-                  <div className="flex-center" style={{ gap: '0.25rem' }}>
-                    <Star size={18} fill="var(--color-accent)" color="var(--color-accent)" />
-                    <span style={{ color: 'var(--color-text-main)', fontWeight: 'bold' }}>{shop.rating}</span>
-                    <span>({shop.reviews} reviews)</span>
-                  </div>
-                  <div className="flex-center" style={{ gap: '0.25rem' }}>
-                    <MapPin size={18} />
-                    <span>{shop.address}</span>
-                  </div>
-                </div>
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(to bottom, rgba(0,0,0,0.3), var(--color-bg))'
+        }}></div>
+
+        <div className="container" style={{ position: 'relative', height: '100%', paddingTop: '20px' }}>
+          <Link to="/" className="btn btn-ghost" style={{ background: 'rgba(0,0,0,0.5)', border: 'none', color: 'white' }}>
+            <ChevronLeft size={20} /> Back
+          </Link>
+        </div>
+      </div>
+
+      <div className="container" style={{ marginTop: '-40px', position: 'relative', zIndex: 10 }}>
+        <div className="glass-panel p-sm-mobile" style={{ padding: '2rem', borderRadius: 'var(--radius-lg)', marginBottom: '2rem' }}>
+          <div className="flex-center mobile-stack-header" style={{ justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
+            <div>
+              <div className="flex-center" style={{ justifyContent: 'flex-start', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                <span style={{
+                  background: 'var(--color-primary)',
+                  color: 'white',
+                  padding: '2px 8px',
+                  borderRadius: '4px',
+                  fontSize: '0.8rem',
+                  fontWeight: 'bold'
+                }}>
+                  {shop.category}
+                </span>
+                {shop.isOpen && (
+                  <span style={{ color: 'var(--color-secondary)', fontWeight: '600', fontSize: '0.9rem' }}>Open Now</span>
+                )}
               </div>
-
-              <div style={{ display: 'flex', gap: '1rem' }}>
-                <button className="btn btn-primary" onClick={() => window.scrollTo({ top: 500, behavior: 'smooth' })}>Order Now</button>
-                <button 
-                  className="btn btn-ghost"
-                  onClick={() => {
-                    const text = `Check out ${shop.name} on Galigo: ${window.location.href}`;
-                    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
-                  }}
-                >
-                  Share
-                </button>
+              <h1 style={{ marginBottom: '0.5rem' }}>{shop.name}</h1>
+              <div className="flex-center" style={{ justifyContent: 'flex-start', gap: '1.5rem', color: 'var(--color-text-muted)', flexWrap: 'wrap' }}>
+                <div className="flex-center" style={{ gap: '0.25rem' }}>
+                  <Star size={18} fill="var(--color-accent)" color="var(--color-accent)" />
+                  <span style={{ color: 'var(--color-text-main)', fontWeight: 'bold' }}>{shop.rating}</span>
+                  <span>({shop.reviews} reviews)</span>
+                </div>
+                <div className="flex-center" style={{ gap: '0.25rem' }}>
+                  <MapPin size={18} />
+                  <span>{shop.address}</span>
+                </div>
               </div>
             </div>
 
-            <hr style={{ borderColor: 'hsla(0,0%,100%,0.1)', margin: '2rem 0' }} />
+            <div className="mobile-full-width-btn" style={{ display: 'flex', gap: '1rem' }}>
+              <button className="btn btn-primary" style={{ flex: 1 }} onClick={() => window.scrollTo({ top: 500, behavior: 'smooth' })}>Order Now</button>
+              <button
+                className="btn btn-ghost"
+                style={{ flex: 1 }}
+                onClick={() => {
+                  const text = `Check out ${shop.name} on Galigo: ${window.location.href}`;
+                  window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+                }}
+              >
+                Share
+              </button>
+            </div>
+          </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '2rem' }}>
-              {/* Left Column: Description & Menu */}
-              <div>
-                <h3 style={{ marginBottom: '1rem' }}>About</h3>
-                <p style={{ color: 'var(--color-text-muted)', marginBottom: '2rem', lineHeight: '1.8' }}>
-                  {shop.description}
-                </p>
+          <hr style={{ borderColor: 'hsla(0,0%,100%,0.1)', margin: '2rem 0' }} />
 
-                <h3 style={{ marginBottom: '1rem' }}>Menu / Services</h3>
+          <div className="service-detail-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '2rem' }}>
+            {/* Left Column: Description & Menu */}
+            <div>
+              <h3 style={{ marginBottom: '1rem' }}>About</h3>
+              <p style={{ color: 'var(--color-text-muted)', marginBottom: '2rem', lineHeight: '1.8' }}>
+                {shop.description}
+              </p>
+
+              <h3 style={{ marginBottom: '1rem' }}>Menu / Services</h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                {shop.services.map((item, index) => (
+                  <div key={index} className="glass-panel" style={{ padding: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderRadius: 'var(--radius-sm)' }}>
+                    <div>
+                      <span style={{ fontWeight: '500', display: 'block' }}>{item.name}</span>
+                      <span style={{ color: 'var(--color-primary)', fontWeight: 'bold' }}>{item.price}</span>
+                    </div>
+                    <button
+                      className="btn btn-ghost"
+                      style={{ border: '1px solid var(--color-primary)', color: 'var(--color-primary)', padding: '0.5rem' }}
+                      onClick={() => addToCart({ ...item, image: shop.image })}
+                    >
+                      <Plus size={18} /> Add
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Column: Info & Hours */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              <div className="glass-panel" style={{ padding: '1.5rem', borderRadius: 'var(--radius-md)' }}>
+                <h4 style={{ marginBottom: '1rem' }}>Info</h4>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontSize: '0.95rem' }}>
+                  <div className="flex-center" style={{ justifyContent: 'flex-start', gap: '0.75rem' }}>
+                    <Clock size={18} color="var(--color-text-muted)" />
+                    <span>{shop.hours}</span>
+                  </div>
+                  <div className="flex-center" style={{ justifyContent: 'flex-start', gap: '0.75rem' }}>
+                    <Phone size={18} color="var(--color-text-muted)" />
+                    <span>{shop.phone}</span>
+                  </div>
+                  <div className="flex-center" style={{ justifyContent: 'flex-start', gap: '0.75rem' }}>
+                    <Globe size={18} color="var(--color-text-muted)" />
+                    <a href={`http://${shop.website}`} target="_blank" rel="noreferrer" style={{ textDecoration: 'underline' }}>{shop.website}</a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="glass-panel" style={{ padding: '1.5rem', borderRadius: 'var(--radius-md)' }}>
+                <h4 style={{ marginBottom: '1rem' }}>Recent Reviews</h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                  {shop.services.map((item, index) => (
-                    <div key={index} className="glass-panel" style={{ padding: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderRadius: 'var(--radius-sm)' }}>
-                      <div>
-                        <span style={{ fontWeight: '500', display: 'block' }}>{item.name}</span>
-                        <span style={{ color: 'var(--color-primary)', fontWeight: 'bold' }}>{item.price}</span>
+                  {shop.reviewsList.map((review, idx) => (
+                    <div key={idx}>
+                      <div className="flex-center" style={{ justifyContent: 'space-between', marginBottom: '0.25rem' }}>
+                        <span style={{ fontWeight: 'bold' }}>{review.user}</span>
+                        <div className="flex-center" style={{ gap: '2px' }}>
+                          <Star size={12} fill="var(--color-accent)" color="var(--color-accent)" />
+                          <span style={{ fontSize: '0.8rem' }}>{review.rating}</span>
+                        </div>
                       </div>
-                      <button 
-                        className="btn btn-ghost" 
-                        style={{ border: '1px solid var(--color-primary)', color: 'var(--color-primary)', padding: '0.5rem' }}
-                        onClick={() => addToCart({ ...item, image: shop.image })}
-                      >
-                        <Plus size={18} /> Add
-                      </button>
+                      <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', fontStyle: 'italic' }}>"{review.text}"</p>
                     </div>
                   ))}
                 </div>
               </div>
-
-              {/* Right Column: Info & Hours */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                <div className="glass-panel" style={{ padding: '1.5rem', borderRadius: 'var(--radius-md)' }}>
-                  <h4 style={{ marginBottom: '1rem' }}>Info</h4>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontSize: '0.95rem' }}>
-                    <div className="flex-center" style={{ justifyContent: 'flex-start', gap: '0.75rem' }}>
-                      <Clock size={18} color="var(--color-text-muted)" />
-                      <span>{shop.hours}</span>
-                    </div>
-                    <div className="flex-center" style={{ justifyContent: 'flex-start', gap: '0.75rem' }}>
-                      <Phone size={18} color="var(--color-text-muted)" />
-                      <span>{shop.phone}</span>
-                    </div>
-                    <div className="flex-center" style={{ justifyContent: 'flex-start', gap: '0.75rem' }}>
-                      <Globe size={18} color="var(--color-text-muted)" />
-                      <a href={`http://${shop.website}`} target="_blank" rel="noreferrer" style={{ textDecoration: 'underline' }}>{shop.website}</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="glass-panel" style={{ padding: '1.5rem', borderRadius: 'var(--radius-md)' }}>
-                   <h4 style={{ marginBottom: '1rem' }}>Recent Reviews</h4>
-                   <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                     {shop.reviewsList.map((review, idx) => (
-                       <div key={idx}>
-                         <div className="flex-center" style={{ justifyContent: 'space-between', marginBottom: '0.25rem' }}>
-                           <span style={{ fontWeight: 'bold' }}>{review.user}</span>
-                           <div className="flex-center" style={{ gap: '2px' }}>
-                             <Star size={12} fill="var(--color-accent)" color="var(--color-accent)" />
-                             <span style={{ fontSize: '0.8rem' }}>{review.rating}</span>
-                           </div>
-                         </div>
-                         <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', fontStyle: 'italic' }}>"{review.text}"</p>
-                       </div>
-                     ))}
-                   </div>
-                </div>
-              </div>
             </div>
-         </div>
-       </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

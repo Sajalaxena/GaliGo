@@ -18,13 +18,13 @@ const CartDrawer = () => {
       justifyContent: 'flex-end',
     }}>
       {/* Backdrop */}
-      <div 
-        style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(4px)' }} 
+      <div
+        style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(4px)' }}
         onClick={() => setIsCartOpen(false)}
       ></div>
 
       {/* Drawer */}
-      <div className="glass-panel" style={{
+      <div className="glass-panel w-full-mobile" style={{
         position: 'relative',
         width: '100%',
         maxWidth: '400px',
@@ -63,32 +63,32 @@ const CartDrawer = () => {
                   <div style={{ flex: 1 }}>
                     <div className="flex-center" style={{ justifyContent: 'space-between', marginBottom: '0.25rem' }}>
                       <h4 style={{ fontSize: '1rem', margin: 0 }}>{item.name}</h4>
-                      <button 
+                      <button
                         onClick={() => removeFromCart(item.id, item.name)}
                         style={{ background: 'transparent', color: 'var(--color-text-muted)', fontSize: '0.8rem', cursor: 'pointer', padding: '0.25rem' }}
                       >
-                       <X size={14} />
+                        <X size={14} />
                       </button>
                     </div>
                     <p style={{ color: 'var(--color-primary)', fontWeight: 'bold', fontSize: '0.9rem', marginBottom: '0.5rem' }}>{item.price}</p>
-                    
-                    <div className="flex-center" style={{ 
-                      background: 'rgba(255,255,255,0.05)', 
-                      display: 'inline-flex', 
+
+                    <div className="flex-center" style={{
+                      background: 'rgba(255,255,255,0.05)',
+                      display: 'inline-flex',
                       borderRadius: 'var(--radius-sm)',
                       padding: '0.25rem'
                     }}>
-                      <button 
+                      <button
                         onClick={() => updateQuantity(item.id, item.name, -1)}
-                        className="btn-ghost" 
+                        className="btn-ghost"
                         style={{ padding: '0.25rem 0.5rem', border: 'none' }}
                       >
                         <Minus size={14} />
                       </button>
                       <span style={{ padding: '0 0.5rem', fontSize: '0.9rem', fontWeight: '600' }}>{item.quantity}</span>
-                      <button 
+                      <button
                         onClick={() => updateQuantity(item.id, item.name, 1)}
-                        className="btn-ghost" 
+                        className="btn-ghost"
                         style={{ padding: '0.25rem 0.5rem', border: 'none' }}
                       >
                         <Plus size={14} />
@@ -108,8 +108,8 @@ const CartDrawer = () => {
               <span style={{ color: 'var(--color-text-muted)' }}>Total</span>
               <span style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>₹{cartTotal.toFixed(2)}</span>
             </div>
-            <button 
-              className="btn btn-primary" 
+            <button
+              className="btn btn-primary"
               style={{ width: '100%', justifyContent: 'center' }}
               onClick={() => {
                 setIsCartOpen(false);
@@ -121,7 +121,7 @@ const CartDrawer = () => {
           </div>
         )}
       </div>
-      
+
       <style>{`
         @keyframes slideInRight {
           from { transform: translateX(100%); }

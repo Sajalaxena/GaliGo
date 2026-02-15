@@ -33,7 +33,7 @@ const LocationModal = () => {
       justifyContent: 'center',
       padding: '1rem'
     }}>
-      <div className="glass-panel" style={{
+      <div className="glass-panel w-full-mobile" style={{
         width: '100%',
         maxWidth: '500px',
         padding: '2rem',
@@ -51,16 +51,16 @@ const LocationModal = () => {
         </div>
 
         <div style={{ marginBottom: '2rem' }}>
-          <div className="flex-center" style={{ 
-            background: 'var(--color-bg)', 
+          <div className="flex-center" style={{
+            background: 'var(--color-bg)',
             border: '1px solid var(--color-border)',
             padding: '0.75rem 1rem',
             borderRadius: 'var(--radius-md)',
             marginBottom: '1rem'
           }}>
             <MapPin size={20} color="var(--color-primary)" style={{ marginRight: '0.75rem' }} />
-            <input 
-              type="text" 
+            <input
+              type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Search city, e.g. Delhi, Mumbai..."
@@ -75,13 +75,13 @@ const LocationModal = () => {
               autoFocus
             />
           </div>
-          
-          <button 
-            className="btn btn-ghost" 
+
+          <button
+            className="btn btn-ghost"
             style={{ width: '100%', justifyContent: 'center', gap: '0.5rem', color: 'var(--color-primary)' }}
             onClick={() => {
-               // Simulate GPS fetch (mock)
-               setInputValue("New Delhi, India");
+              // Simulate GPS fetch (mock)
+              setInputValue("New Delhi, India");
             }}
           >
             <Navigation size={18} />
@@ -89,8 +89,8 @@ const LocationModal = () => {
           </button>
         </div>
 
-        <button 
-          className="btn btn-primary" 
+        <button
+          className="btn btn-primary"
           style={{ width: '100%', justifyContent: 'center', fontSize: '1.1rem', padding: '1rem' }}
           onClick={handleConfirm}
         >
