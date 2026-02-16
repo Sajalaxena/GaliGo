@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import ServiceDetail from './pages/ServiceDetail';
 import Login from './pages/Login';
 import Checkout from './pages/Checkout';
+import ComingSoon from './pages/ComingSoon';
 import LocationModal from './components/LocationModal';
 import CartDrawer from './components/CartDrawer';
 import Footer from './components/Footer';
@@ -25,7 +26,8 @@ function App() {
               <Navbar />
               <main style={{ flex: 1 }}>
                 <Routes>
-                  <Route path="/" element={<Home />} />
+                  <Route path="/" element={<ComingSoon />} />
+                  <Route path="/home" element={<Home />} />
                   <Route path="/service/:id" element={<ServiceDetail />} />
                   <Route path="/checkout" element={<Checkout />} />
                   <Route path="/login" element={<Login />} />

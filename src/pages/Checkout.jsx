@@ -21,28 +21,123 @@ const Checkout = () => {
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [deliveryType, setDeliveryType] = useState('standard');
   const [paymentMethod, setPaymentMethod] = useState('cod');
+  const [orderDetails, setOrderDetails] = useState(null);
 
   const handlePlaceOrder = (e) => {
     e.preventDefault();
+
+    // Calculate delivery time display
+    let deliveryTime = "30-45 mins";
+    if (deliveryType === 'schedule' && selectedSlot) {
+      // Find label
+      const slot = getSlots(scheduleDay).find(s => s.id === selectedSlot);
+      const dayLabel = scheduleDay === 'today' ? 'Today' : 'Tomorrow';
+      if (slot) {
+        deliveryTime = `${dayLabel}, ${slot.label}`;
+      }
+    }
+
     // Simulate API call
     setTimeout(() => {
       playSuccessSound();
+      setOrderDetails({
+        id: `ORD-${Math.floor(Math.random() * 100000)}`,
+        amount: (cartTotal + 40).toFixed(2),
+        deliveryTime: deliveryTime,
+      });
       setOrderPlaced(true);
       clearCart();
     }, 1500);
   };
 
-  if (orderPlaced) {
+  if (orderPlaced && orderDetails) {
     return (
-      <div className="section container flex-center" style={{ flexDirection: 'column', minHeight: '60vh', textAlign: 'center' }}>
-        <div style={{ marginBottom: '2rem' }}>
-          <CheckCircle size={80} color="var(--color-secondary)" />
+      <div className="section container flex-center" style={{
+        flexDirection: 'column',
+        minHeight: '80vh',
+        textAlign: 'center',
+        animation: 'fadeIn 0.5s ease-out'
+      }}>
+        <div style={{
+          background: 'linear-gradient(135deg, rgba(var(--hue-primary), 0.2), rgba(var(--hue-secondary), 0.2))',
+          padding: '3rem',
+          borderRadius: '2rem',
+          border: '1px solid rgba(255,255,255,0.1)',
+          backdropFilter: 'blur(10px)',
+          maxWidth: '500px',
+          width: '100%',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
+        }}>
+          <div style={{
+            marginBottom: '2rem',
+            position: 'relative',
+            display: 'inline-block'
+          }}>
+            <div style={{
+              position: 'absolute',
+              inset: '-10px',
+              background: 'var(--color-primary)',
+              filter: 'blur(20px)',
+              opacity: 0.5,
+              borderRadius: '50%',
+              animation: 'pulse 2s infinite'
+            }}></div>
+            <CheckCircle size={100} color="var(--color-primary)" style={{ position: 'relative', filter: 'drop-shadow(0 0 10px rgba(var(--hue-primary), 0.5))' }} />
+          </div>
+
+          <h1 style={{
+            marginBottom: '0.5rem',
+            background: 'linear-gradient(to right, #fff, var(--color-primary))',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            fontSize: '2.5rem'
+          }}>Order Confirmed!</h1>
+
+          <p style={{ color: 'var(--color-text-muted)', marginBottom: '2rem' }}>
+            Thank you for your purchase.
+          </p>
+
+          <div style={{
+            background: 'rgba(255,255,255,0.05)',
+            borderRadius: '1rem',
+            padding: '1.5rem',
+            marginBottom: '2rem',
+            textAlign: 'left'
+          }}>
+            <div className="flex-center" style={{ justifyContent: 'space-between', marginBottom: '1rem' }}>
+              <span style={{ color: 'var(--color-text-muted)' }}>Order ID</span>
+              <span style={{ fontWeight: 'bold', fontFamily: 'monospace' }}>{orderDetails.id}</span>
+            </div>
+            <div className="flex-center" style={{ justifyContent: 'space-between', marginBottom: '1rem' }}>
+              <span style={{ color: 'var(--color-text-muted)' }}>Amount Paid</span>
+              <span style={{ fontWeight: 'bold' }}>₹{orderDetails.amount}</span>
+            </div>
+            <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', margin: '1rem 0' }}></div>
+            <div className="flex-center" style={{ justifyContent: 'space-between' }}>
+              <span style={{ color: 'var(--color-text-muted)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <Clock size={16} /> Estimated Delivery
+              </span>
+              <span style={{ fontWeight: 'bold', color: 'var(--color-secondary)' }}>{orderDetails.deliveryTime}</span>
+            </div>
+          </div>
+
+          <div style={{ display: 'grid', gap: '1rem' }}>
+            <button className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', fontSize: '1.1rem', padding: '1rem' }}>
+              Track Order
+            </button>
+            <Link to="/" className="btn btn-ghost" style={{ width: '100%', justifyContent: 'center' }}>
+              Continue Shopping
+            </Link>
+          </div>
         </div>
-        <h1 style={{ marginBottom: '1rem' }}>Order Placed!</h1>
-        <p style={{ color: 'var(--color-text-muted)', maxWidth: '400px', marginBottom: '2rem' }}>
-          Your order has been successfully placed. Your delivery partner will arrive in approximately 35 mins.
-        </p>
-        <Link to="/" className="btn btn-primary">Continue Shopping</Link>
+
+        <style>{`
+            @keyframes pulse {
+                0% { transform: scale(0.95); opacity: 0.5; }
+                50% { transform: scale(1.05); opacity: 0.2; }
+                100% { transform: scale(0.95); opacity: 0.5; }
+            }
+        `}</style>
       </div>
     );
   }
