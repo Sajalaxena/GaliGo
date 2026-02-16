@@ -1,10 +1,7 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 const ComingSoon = () => {
-    const navigate = useNavigate();
-
     return (
         <div style={{
             position: 'fixed',
@@ -43,50 +40,49 @@ const ComingSoon = () => {
                 animation: 'float 15s infinite ease-in-out reverse'
             }}></div>
 
+            {/* Logo at the very top */}
+            <div style={{
+                position: 'absolute',
+                top: '10%',
+                zIndex: 20
+            }}>
+                <div style={{
+                    fontSize: '3.5rem',
+                    fontWeight: 'bold',
+                    color: 'white',
+                    textDecoration: 'none',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '1rem',
+                    animation: 'pulse 3s infinite ease-in-out'
+                }}>
+                    <img
+                        src="/favicon.svg"
+                        alt="GaliGo Logo"
+                        style={{
+                            width: '60px',
+                            height: '60px',
+                            filter: 'drop-shadow(0 0 15px rgba(14, 165, 233, 0.6))'
+                        }}
+                    />
+                    <span style={{ letterSpacing: '-2px' }}>
+                        <span style={{ color: '#0EA5E9' }}>Gali</span><span style={{ color: 'white' }}>Go</span>
+                    </span>
+                </div>
+            </div>
+
             <div style={{
                 position: 'relative',
                 zIndex: 10,
                 textAlign: 'center',
                 padding: '2rem',
                 maxWidth: '800px',
-                animation: 'fadeInUp 1s ease-out'
+                animation: 'fadeInUp 1s ease-out',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                paddingTop: '10vh' // Push content down a bit
             }}>
-        }}>
-                {/* Animated Logo Section */}
-                <div style={{ marginBottom: '3rem', position: 'relative', display: 'inline-block' }}>
-                    <div style={{
-                        position: 'absolute',
-                        inset: '-20px',
-                        background: 'radial-gradient(circle, rgba(14, 165, 233, 0.4) 0%, transparent 70%)',
-                        filter: 'blur(20px)',
-                        zIndex: -1,
-                        animation: 'pulse 3s infinite ease-in-out'
-                    }}></div>
-                    <div style={{
-                        fontSize: '2.5rem',
-                        fontWeight: 'bold',
-                        color: 'white',
-                        textDecoration: 'none',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '1rem',
-                        transform: 'scale(1.2)',
-                        animation: 'logoEntrance 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards'
-                    }}>
-                        <img
-                            src="/favicon.svg"
-                            alt="GaliGo Logo"
-                            style={{
-                                width: '64px',
-                                height: '64px',
-                                filter: 'drop-shadow(0 0 15px rgba(14, 165, 233, 0.6))'
-                            }}
-                        />
-                        <span style={{ letterSpacing: '-1px', display: 'flex', alignItems: 'center' }}>
-                            <span style={{ color: '#0EA5E9' }}>Gali</span>Go
-                        </span>
-                    </div>
-                </div>
 
                 <div style={{
                     display: 'inline-flex',
@@ -122,10 +118,9 @@ const ComingSoon = () => {
                     margin: '0 auto 3rem auto',
                     lineHeight: 1.6
                 }}>
-                    We are crafting an experience that will redefine how you discover local services. Get ready for GaliGo.
+                    We are crafting an experience that will redefine how you discover local services. Get ready for <span style={{ color: '#0EA5E9', fontWeight: 'bold' }}>Gali</span><span style={{ color: 'white', fontWeight: 'bold' }}>Go</span>.
                 </p>
 
-                <div style={{ height: '2rem' }}></div> {/* Spacer instead of button */}
             </div>
 
             <div style={{
@@ -138,14 +133,6 @@ const ComingSoon = () => {
             </div>
 
             <style>{`
-        @keyframes logoEntrance {
-          from { opacity: 0; transform: scale(0.5) translateY(-20px); }
-          to { opacity: 1; transform: scale(1.2) translateY(0); }
-        }
-        @keyframes pulse {
-          0%, 100% { transform: scale(1); opacity: 0.5; }
-          50% { transform: scale(1.2); opacity: 0.8; }
-        }
         @keyframes float {
           0%, 100% { transform: translate(0, 0); }
           50% { transform: translate(30px, -30px); }
@@ -153,6 +140,10 @@ const ComingSoon = () => {
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(30px); }
           to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+          0%, 100% { transform: scale(1); filter: brightness(1); }
+          50% { transform: scale(1.05); filter: brightness(1.2); }
         }
       `}</style>
         </div>
