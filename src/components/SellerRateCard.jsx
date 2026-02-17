@@ -19,9 +19,9 @@ const SellerRateCard = () => {
             <FloatingIcons opacity={0.08} />
 
             <div style={{ textAlign: 'center', marginBottom: '4rem', position: 'relative', zIndex: 1 }}>
-                <h2 className="animate-fade-in">Join as a Seller</h2>
+                <h2 className="animate-fade-in">Unbeatable Pricing</h2>
                 <p style={{ color: 'var(--color-text-muted)', maxWidth: '600px', margin: '1rem auto' }}>
-                    Expand your business reach with GaliGo. Simple, transparent, and effective.
+                    Grow your business with the most competitive rates in Moradabad.
                 </p>
             </div>
 

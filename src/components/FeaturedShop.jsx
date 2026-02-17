@@ -46,29 +46,33 @@ const FeaturedShop = () => {
                 <p style={{ color: 'var(--color-text-muted)' }}>Scroll to discover our premium partners.</p>
             </div>
 
-            <div style={{ position: 'relative', zIndex: 1 }}>
+            <div style={{ position: 'relative', zIndex: 1, minHeight: '100vh', paddingBottom: '4rem' }}>
                 {featuredShops.map((shop, index) => (
                     <div
                         key={shop.id}
-                        className="glass-panel"
+                        className="glass-panel featured-card"
                         style={{
                             position: 'sticky',
-                            top: `calc(100px + ${index * 20}px)`,
-                            marginBottom: '4rem', // Space for next card to scroll into view
-                            display: 'grid',
-                            gridTemplateColumns: '1.5fr 1fr',
+                            top: `calc(100px + ${index * 15}px)`,
+                            marginBottom: '60px', // Space for next card
                             borderRadius: 'var(--radius-lg)',
                             overflow: 'hidden',
                             padding: 0,
-                            minHeight: '400px',
-                            boxShadow: `0 -10px 30px rgba(0,0,0,0.1), 0 4px 30px var(--color-shadow)`, // strong shadow for depth
+                            boxShadow: `0 -5px 20px rgba(0,0,0,0.1), 0 4px 30px var(--color-shadow)`,
                             zIndex: index + 1,
                             background: `linear-gradient(to bottom right, var(--color-surface-glass), hsla(${shop.color}, 30%, 20%, 0.1))`,
-                            backdropFilter: 'blur(20px)' // Heavy blur to hide content behind
+                            backdropFilter: 'blur(20px)',
+                            display: 'flex',
+                            flexDirection: 'column', // Mobile Default: Column
                         }}
                     >
                         {/* Image Side */}
-                        <div style={{ position: 'relative', height: '100%', minHeight: '300px' }} className="w-full-mobile">
+                        <div style={{
+                            position: 'relative',
+                            height: '220px', // Fixed height for mobile image
+                            width: '100%',
+                            flexShrink: 0
+                        }} className="featured-image">
                             <img
                                 src={shop.image}
                                 alt={shop.name}
@@ -84,50 +88,67 @@ const FeaturedShop = () => {
                                 left: 0,
                                 right: 0,
                                 bottom: 0,
-                                background: 'linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.2))'
+                                background: 'linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.3))'
                             }}></div>
                         </div>
 
                         {/* Details Side */}
-                        <div style={{ padding: '3rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }} className="w-full-mobile">
-                            <div style={{ marginBottom: '1rem', display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                        <div style={{
+                            padding: '1.5rem',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            flex: 1
+                        }}>
+                            <div style={{ marginBottom: '0.75rem', display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                                 <span style={{
                                     background: 'var(--color-rating)',
                                     color: 'white',
-                                    padding: '0.25rem 0.75rem',
+                                    padding: '0.25rem 0.6rem',
                                     borderRadius: 'var(--radius-pill)',
-                                    fontSize: '0.8rem',
+                                    fontSize: '0.75rem',
                                     fontWeight: 'bold',
                                     display: 'inline-flex',
                                     alignItems: 'center',
                                     gap: '0.25rem'
                                 }}>
-                                    {shop.rating} <Star size={12} fill="white" />
+                                    {shop.rating} <Star size={10} fill="white" />
                                 </span>
-                                <span style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>{shop.category}</span>
+                                <span style={{ color: 'var(--color-text-muted)', fontSize: '0.85rem' }}>{shop.category}</span>
                             </div>
 
-                            <h2 style={{ marginBottom: '1rem', fontSize: '2rem' }}>{shop.name}</h2>
+                            <h2 style={{ marginBottom: '0.5rem', fontSize: '1.5rem' }}>{shop.name}</h2>
 
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem', color: 'var(--color-text-muted)' }}>
-                                <MapPin size={18} />
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem', color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>
+                                <MapPin size={16} />
                                 <span>{shop.location}</span>
                             </div>
 
-                            <p style={{ color: 'var(--color-text-muted)', marginBottom: '2rem', lineHeight: '1.6' }}>
+                            <p style={{ color: 'var(--color-text-muted)', marginBottom: '1.5rem', lineHeight: '1.5', fontSize: '0.95rem' }}>
                                 {shop.description}
                             </p>
 
-                            <button className="btn btn-primary">
-                                Visit Shop
-                            </button>
+                            {/* 'Visit Shop' Button Removed as requested */}
 
-                            <div style={{ marginTop: 'auto', paddingTop: '1rem', fontSize: '0.8rem', color: 'var(--color-text-muted)', opacity: 0.7 }}>
+                            <div style={{ marginTop: 'auto', paddingTop: '1rem', fontSize: '0.75rem', color: 'var(--color-text-muted)', opacity: 0.7 }}>
                                 #{index + 1} Top Rated Seller
                             </div>
                         </div>
                     </div>
                 ))}
+
+                <style>{`
+                    @media (min-width: 768px) {
+                        .featured-card {
+                            display: grid !important;
+                            grid-template-columns: 1.5fr 1fr !important;
+                            min-height: 400px;
+                        }
+                        .featured-image {
+                            height: 100% !important;
+                        }
+                    }
+                `}</style>
             </div>
         </section>
     );
