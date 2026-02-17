@@ -32,78 +32,16 @@ const Navbar = () => {
 
                 {/* Mobile Actions (Cart & Hamburger) */}
                 <div className="flex-center hidden-desktop" style={{ gap: '1rem' }}>
-                    {/* Cart (Commented Out) */}
-                    {/* <div
-            className="flex-center"
-            style={{ position: 'relative', cursor: 'pointer' }}
-            onClick={() => setIsCartOpen(true)}
-          >
-            <ShoppingBag size={22} color="var(--color-text-main)" />
-            {cartCount > 0 && (
-              <div style={{
-                position: 'absolute',
-                top: '-5px',
-                right: '-5px',
-                background: 'var(--color-primary)',
-                color: 'white',
-                fontSize: '0.7rem',
-                width: '16px',
-                height: '16px',
-                borderRadius: '50%',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}>{cartCount}</div>
-            )}
-          </div> */}
-                    <button onClick={() => setIsMenuOpen(true)} className="btn btn-ghost" style={{ padding: '0.5rem' }}>
+                    <button onClick={() => setIsMenuOpen(true)} className="btn btn-ghost" style={{ padding: '0.5rem', color: 'var(--color-text-main)' }}>
                         <Menu size={24} />
                     </button>
                 </div>
 
                 {/* Desktop Actions */}
                 <div className="flex-center hidden-mobile" style={{ gap: '1.5rem' }}>
-                    {/* Location Selector (Mock) */}
-
-                    {/* Location Selector (Commented Out) */}
-                    {/* <div
-            className="flex-center"
-            style={{ gap: '0.5rem', color: 'var(--color-text-muted)', cursor: 'pointer', maxWidth: '200px' }}
-            onClick={() => setIsLocationConfirmed(false)}
-          >
-            <MapPin size={18} color="var(--color-primary)" />
-            <span style={{ fontSize: '0.9rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{location}</span>
-          </div> */}
-
                     <button onClick={toggleTheme} className="btn btn-ghost" style={{ padding: '0.5rem' }}>
                         {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
                     </button>
-
-                    {/* Cart Icon (Commented Out) */}
-                    {/* <div
-            className="flex-center"
-            style={{ position: 'relative', cursor: 'pointer' }}
-            onClick={() => setIsCartOpen(true)}
-          >
-            <ShoppingBag size={22} color="var(--color-text-main)" />
-            {cartCount > 0 && (
-              <div style={{
-                position: 'absolute',
-                top: '-5px',
-                right: '-5px',
-                background: 'var(--color-primary)',
-                color: 'white',
-                fontSize: '0.7rem',
-                width: '16px',
-                height: '16px',
-                borderRadius: '50%',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}>{cartCount}</div>
-            )}
-          </div> */}
-
                     {isAuthenticated ? (
                         <div style={{ position: 'relative' }}>
                             <button
@@ -130,7 +68,9 @@ const Navbar = () => {
                                     boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
                                     display: 'flex',
                                     flexDirection: 'column',
-                                    gap: '0.25rem'
+                                    gap: '0.25rem',
+                                    background: 'var(--color-surface)',
+                                    zIndex: 10
                                 }}>
                                     <button className="btn btn-ghost" style={{ justifyContent: 'flex-start', fontSize: '0.9rem', width: '100%' }} onClick={logout}>
                                         <LogOut size={16} style={{ marginRight: '0.5rem' }} /> Logout
@@ -150,7 +90,7 @@ const Navbar = () => {
                 <div style={{
                     position: 'fixed',
                     inset: 0,
-                    zIndex: 200,
+                    zIndex: 9999,
                     display: 'flex',
                     justifyContent: 'flex-end',
                 }}>
@@ -160,24 +100,26 @@ const Navbar = () => {
                     ></div>
                     <div className="glass-panel" style={{
                         position: 'relative',
-                        width: '80%',
-                        maxWidth: '300px',
-                        height: '100%',
+                        width: '85%',
+                        maxWidth: '320px',
+                        height: '100dvh',
                         background: 'var(--color-surface)',
+                        color: 'var(--color-text-main)',
                         borderLeft: '1px solid var(--color-border)',
                         display: 'flex',
                         flexDirection: 'column',
                         padding: '2rem',
-                        gap: '2rem'
+                        gap: '2rem',
+                        boxShadow: '-10px 0 30px rgba(0,0,0,0.2)'
                     }}>
                         <div className="flex-center" style={{ justifyContent: 'space-between' }}>
-                            <span style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>Menu</span>
-                            <button onClick={() => setIsMenuOpen(false)} className="btn btn-ghost" style={{ padding: '0.5rem' }}>
-                                <X size={24} />
+                            <span style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Menu</span>
+                            <button onClick={() => setIsMenuOpen(false)} className="btn btn-ghost" style={{ padding: '0.5rem', color: 'var(--color-text-main)' }}>
+                                <X size={28} />
                             </button>
                         </div>
 
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', flex: 1, overflowY: 'auto' }}>
                             {/* Location in Menu */}
                             <button
                                 className="btn btn-ghost"
@@ -192,30 +134,35 @@ const Navbar = () => {
                             </button>
 
                             {/* Theme Toggle */}
-                            <div className="flex-center" style={{ justifyContent: 'space-between' }}>
-                                <span>Appearance</span>
+                            <div className="flex-center" style={{ justifyContent: 'space-between', padding: '0.5rem', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)' }}>
+                                <span style={{ fontWeight: '500' }}>Appearance</span>
                                 <button onClick={toggleTheme} className="btn btn-ghost" style={{ padding: '0.5rem' }}>
-                                    {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+                                    {isDarkMode ? <span className="flex-center" style={{ gap: '0.5rem' }}><Sun size={20} /> Light</span> : <span className="flex-center" style={{ gap: '0.5rem' }}><Moon size={20} /> Dark</span>}
                                 </button>
                             </div>
 
-                            {isAuthenticated ? (
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                                    <div className="flex-center" style={{ justifyContent: 'flex-start', gap: '1rem' }}>
-                                        <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'var(--color-primary)', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white', fontWeight: 'bold' }}>
-                                            {user?.name?.charAt(0).toUpperCase()}
+                            <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                                {isAuthenticated ? (
+                                    <>
+                                        <div className="flex-center" style={{ justifyContent: 'flex-start', gap: '1rem', padding: '1rem', background: 'var(--color-bg)', borderRadius: 'var(--radius-sm)' }}>
+                                            <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'var(--color-primary)', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white', fontWeight: 'bold' }}>
+                                                {user?.name?.charAt(0).toUpperCase()}
+                                            </div>
+                                            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                                <span style={{ fontWeight: '600' }}>{user?.name}</span>
+                                                <span style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)' }}>Logged In</span>
+                                            </div>
                                         </div>
-                                        <span style={{ fontWeight: '600' }}>{user?.name}</span>
-                                    </div>
-                                    <button className="btn btn-ghost" style={{ justifyContent: 'flex-start', width: '100%' }} onClick={() => { logout(); setIsMenuOpen(false); }}>
-                                        <LogOut size={18} style={{ marginRight: '0.5rem' }} /> Logout
-                                    </button>
-                                </div>
-                            ) : (
-                                <Link to="/login" className="btn btn-primary" onClick={() => setIsMenuOpen(false)} style={{ width: '100%', justifyContent: 'center' }}>
-                                    Login / Signup
-                                </Link>
-                            )}
+                                        <button className="btn btn-ghost" style={{ justifyContent: 'flex-start', width: '100%', color: '#ef4444' }} onClick={() => { logout(); setIsMenuOpen(false); }}>
+                                            <LogOut size={18} style={{ marginRight: '0.5rem' }} /> Logout
+                                        </button>
+                                    </>
+                                ) : (
+                                    <Link to="/login" className="btn btn-primary" onClick={() => setIsMenuOpen(false)} style={{ width: '100%', justifyContent: 'center', padding: '1rem' }}>
+                                        Login / Signup
+                                    </Link>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
