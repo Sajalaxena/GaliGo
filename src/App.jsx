@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import ServiceDetail from './pages/ServiceDetail';
 import Login from './pages/Login';
 import Checkout from './pages/Checkout';
+import LandingPage from './pages/LandingPage';
 import ComingSoon from './pages/ComingSoon';
 import LocationModal from './components/LocationModal';
 import CartDrawer from './components/CartDrawer';
@@ -26,7 +27,7 @@ function App() {
               <Navbar />
               <main style={{ flex: 1 }}>
                 <Routes>
-                  <Route path="/" element={<ComingSoon />} />
+                  <Route path="/" element={<LandingPage />} />
                   <Route path="/home" element={<Home />} />
                   <Route path="/service/:id" element={<ServiceDetail />} />
                   <Route path="/checkout" element={<Checkout />} />
