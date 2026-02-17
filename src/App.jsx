@@ -21,7 +21,7 @@ function App() {
       <AuthProvider>
         <LocationProvider>
           <CartProvider>
-            <LocationModal />
+            {/* <LocationModal /> */}
             <CartDrawer />
             <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
               <Navbar />

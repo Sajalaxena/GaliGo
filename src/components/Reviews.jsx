@@ -8,22 +8,19 @@ const Reviews = () => {
             id: 1,
             name: "Raju Bhaiya",
             role: "Owner, Raju Chaat Bhandar",
-            content: "Sach bataun toh pehle darr lag raha tha online aane mein, par GaliGo ne sab aasan kar diya. Ab toh ghar baithe order aate hain!",
-            image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW5kaWFuJTIwbWFufGVufDB8fDB8fHww"
+            content: "Sach bataun toh pehle darr lag raha tha online aane mein, par GaliGo ne sab aasan kar diya. Ab toh ghar baithe order aate hain!"
         },
         {
             id: 2,
             name: "Meena Ji",
             role: "Owner, Meena Boutique",
-            content: "GaliGo ki wajah se meri shop ab poore Moradabad mein famous ho gayi hai. Best part ye hai ki 2 mahine tak koi commission nahi dena!",
-            image: "https://images.unsplash.com/photo-1621184455862-c163dfb30e0f?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aW5kaWFuJTIwd29tYW58ZW58MHx8MHx8fDA%3D"
+            content: "GaliGo ki wajah se meri shop ab poore Moradabad mein famous ho gayi hai. Best part ye hai ki 2 mahine tak koi commission nahi dena!"
         },
         {
             id: 3,
             name: "Suresh Gupta",
             role: "Owner, Gupta Electronics",
-            content: "Local support team bahut badhiya hai. Koi bhi dikkat hoti hai toh turant phone uthate hain. Sales bhi double ho gayi hai.",
-            image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGluZGlhbiUyMG1hbnxlbnwwfHwwfHx8MA%3D%3D"
+            content: "Local support team bahut badhiya hai. Koi bhi dikkat hoti hai toh turant phone uthate hain. Sales bhi double ho gayi hai."
         }
     ];
 
@@ -60,16 +57,9 @@ const Reviews = () => {
                             "{review.content}"
                         </p>
 
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '1rem' }}>
-                            <img
-                                src={review.image}
-                                alt={review.name}
-                                style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--color-surface)' }}
-                            />
-                            <div>
-                                <h4 style={{ fontSize: '1.1rem', marginBottom: '0.2rem' }}>{review.name}</h4>
-                                <span style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)' }}>{review.role}</span>
-                            </div>
+                        <div style={{ marginTop: '1rem' }}>
+                            <h4 style={{ fontSize: '1.1rem', marginBottom: '0.2rem' }}>{review.name}</h4>
+                            <span style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)' }}>{review.role}</span>
                         </div>
                     </div>
                 ))}
