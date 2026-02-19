@@ -18,7 +18,7 @@ const SellerRateCard = () => {
 
             <FloatingIcons opacity={0.08} />
 
-            <div style={{ textAlign: 'center', marginBottom: '4rem', position: 'relative', zIndex: 1 }}>
+            <div className="section-header">
                 <h2 className="animate-fade-in">Unbeatable Pricing</h2>
                 <p style={{ color: 'var(--color-text-muted)', maxWidth: '600px', margin: '1rem auto' }}>
                     Grow your business with the most competitive rates in Moradabad.

@@ -100,7 +100,7 @@ const FAQSection = () => {
             <FloatingIcons opacity={0.1} />
 
             <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-                <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+                <div className="section-header">
                     <h2 className="animate-fade-in" style={{ marginBottom: '1rem' }}>Frequently Asked Questions</h2>
                     <p style={{ color: 'var(--color-text-muted)', fontSize: '1.1rem' }}>
                         Everything you need to know about joining <GaliGoBrand />.

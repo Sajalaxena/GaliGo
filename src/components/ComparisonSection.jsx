@@ -33,7 +33,7 @@ const ComparisonSection = () => {
             <FloatingIcons opacity={0.1} />
 
             <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-                <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+                <div className="section-header">
                     <h2 className="animate-fade-in" style={{ fontSize: '2.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
                         Why Choose <GaliGoBrand />?
                     </h2>

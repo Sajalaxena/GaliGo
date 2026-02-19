@@ -216,6 +216,21 @@ button {
   justify-content: center;
 }
 
+/* Section Header - Responsive Spacing */
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .section-header {
+    margin-bottom: 2rem;
+  }
+}
+
+
 /* Button Styles */
 .btn {
   display: inline-flex;
